@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Selamat Ulang Tahun!</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&family=Dancing+Script:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- ===== MUSIC PLAYER ===== -->
+    <!-- 🎵 MUSIK: Ganti src di bawah dengan path/link file lagu kamu -->
+    <audio id="bgMusic" loop preload="auto">
+      <source src="lagu.mpeg" type="audio/mpeg" />
+      <!-- Contoh: <source src="lagu.mp3" type="audio/mpeg"> -->
+      <!-- Atau pakai link online: <source src="https://example.com/lagu.mp3" type="audio/mpeg"> -->
+    </audio>
+
+    <!-- 🔊 TOMBOL MUSIK (kanan atas) -->
+    <button id="musicBtn" onclick="toggleMusic()" title="On/Off Musik">
+      🔇
+    </button>
+
+    <!-- ===== DECORATIVE STARS ===== -->
+    <div class="star" style="top: 5%; left: 8%; animation-delay: 0s">⭐</div>
+    <div class="star" style="top: 10%; right: 12%; animation-delay: 0.5s">
+      ✨
+    </div>
+    <div class="star" style="top: 80%; left: 5%; animation-delay: 1s">🌟</div>
+    <div class="star" style="top: 70%; right: 8%; animation-delay: 0.3s">
+      ⭐
+    </div>
+    <div class="star" style="top: 20%; left: 3%; animation-delay: 0.8s">✨</div>
+    <div class="star" style="top: 90%; right: 15%; animation-delay: 1.2s">
+      🌟
+    </div>
+
+    <!-- ===== ENVELOPE SCREEN ===== -->
+    <div id="envelopeScreen">
+      <p class="intro-text">
+        💌 Kamu punya pesan spesial!<br />Buka sekarang...
+      </p>
+      <div
+        class="envelope-wrapper"
+        id="envelopeWrapper"
+        onclick="openEnvelope()"
+      >
+        <div class="ribbon">🎀</div>
+        <div class="envelope">
+          <div class="env-body">
+            <div class="env-stamp">💝</div>
+          </div>
+          <div class="env-left"></div>
+          <div class="env-right"></div>
+          <div class="env-bottom"></div>
+          <div class="env-flap"></div>
+          <div class="env-heart">❤️</div>
+        </div>
+      </div>
+      <p class="tap-hint">👆 Tap untuk membuka</p>
+    </div>
+
+    <!-- ===== CARD SCREEN ===== -->
+    <div id="cardScreen">
+      <div class="card">
+        <h1 class="card-title">Happy Birthday Ipaaa! 🎉</h1>
+
+        <div class="photo-frame-wrapper">
+          <div class="frame-stars">
+            <span
+              class="fstar"
+              style="
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%) rotate(0deg) translateY(-88px);
+              "
+              >⭐</span
+            >
+            <span
+              class="fstar"
+              style="
+                top: 50%;
+                right: 0;
+                transform: translateY(-50%) translateX(88px);
+              "
+              >⭐</span
+            >
+            <span
+              class="fstar"
+              style="
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%) translateY(88px);
+              "
+              >⭐</span
+            >
+            <span
+              class="fstar"
+              style="
+                top: 50%;
+                left: 0;
+                transform: translateY(-50%) translateX(-88px);
+              "
+              >⭐</span
+            >
+          </div>
+          <div class="photo-frame">
+            <div class="photo-frame-inner" id="photoFrameInner">
+              <!-- 📸 FOTO: Gambar sudah di-embed langsung di sini -->
+              <img src="ipaa.jpeg" alt="Ipaa" />
+            </div>
+          </div>
+          <span class="frame-deco">🌸</span>
+          <span class="frame-deco">🌺</span>
+          <span class="frame-deco">🌼</span>
+          <span class="frame-deco">🌷</span>
+        </div>
+
+        <!-- 💬 PESAN: Edit teks di bawah sesuai keinginanmu -->
+        <div class="card-message">
+          Ciee makin tua aja nih si kulkas🥶, semoga selalu diberikan kesehatan
+          yang prima, kebahagiaan yang utuh, dan kedamaian di setiap langkahmu.
+          Semoga Tuhan membukakan pintu hatimu untukku 🤭. Ikan hiu🦈 makan
+          tomat🍅 i like you so much❤️, eh lupa kan Just FRIEND 👥, bercandaku
+          jangan di masukin ke hati ya, masukin aja ke ginjal siapa tau aku jadi
+          separuh nafasmu 🥰🤣 Dorrr.....
+        </div>
+
+        <p class="card-from">- Dari Pria Cool -</p>
+        <div class="card-footer-deco"></div>
+
+        <!-- ===== TOMBOL AKSI ===== -->
+        <div class="card-actions">
+          <!-- 🎁 Tombol Hadiah -->
+          <button class="btn-action btn-gift" onclick="showGiftPage()">
+            🎁 Hadiah Spesial
+          </button>
+
+          <!-- 📱 Tombol WhatsApp -->
+          <!-- 📞 WHATSAPP: Ganti NOMOR_HP_KAMU dengan nomor tujuan (contoh: 6281234567890) -->
+          <a
+            class="btn-action btn-wa"
+            href="https://wa.me/+6281573666817?text=Makasih banyak aldii, i like you too❤️"
+            target="_blank"
+          >
+            💬 Kirim Pesan
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== GIFT PAGE ===== -->
+    <div id="giftPage">
+      <button class="gift-back" onclick="hideGiftPage()">← Kembali</button>
+      <h2 class="gift-title">🎁 Hadiah Untukmu, Ipaa! 💝</h2>
+
+      <!-- Animated Bouquet SVG -->
+      <div class="bouquet-container" id="bouquetContainer">
+        <svg
+          class="bouquet-svg"
+          viewBox="0 0 260 320"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <!-- Stems -->
+          <g stroke="#4caf50" stroke-width="3" fill="none">
+            <path
+              d="M130 280 Q120 240 110 200 Q100 170 108 140"
+              stroke-width="3.5"
+            />
+            <path
+              d="M130 280 Q130 250 130 210 Q130 185 128 155"
+              stroke-width="3.5"
+            />
+            <path
+              d="M130 280 Q138 240 148 200 Q158 170 152 140"
+              stroke-width="3.5"
+            />
+            <path
+              d="M130 280 Q115 255 100 225 Q88 200 90 170"
+              stroke-width="3"
+            />
+            <path
+              d="M130 280 Q143 255 158 225 Q170 200 168 172"
+              stroke-width="3"
+            />
+            <!-- leaves -->
+            <path
+              d="M118 220 Q100 210 98 195 Q112 200 118 220"
+              fill="#66bb6a"
+              stroke="#4caf50"
+            />
+            <path
+              d="M142 225 Q160 215 162 200 Q148 205 142 225"
+              fill="#66bb6a"
+              stroke="#4caf50"
+            />
+          </g>
+          <!-- Wrap / paper -->
+          <polygon
+            points="90,290 170,290 180,310 80,310"
+            fill="#ff80ab"
+            opacity=".9"
+          />
+          <polygon points="95,280 165,280 170,290 90,290" fill="#f48fb1" />
+          <line
+            x1="130"
+            y1="280"
+            x2="130"
+            y2="310"
+            stroke="#f06292"
+            stroke-width="1.5"
+          />
+          <!-- Ribbon on wrap -->
+          <path
+            d="M130 285 Q110 278 95 282"
+            stroke="#e91e63"
+            stroke-width="2"
+            fill="none"
+          />
+          <path
+            d="M130 285 Q150 278 165 282"
+            stroke="#e91e63"
+            stroke-width="2"
+            fill="none"
+          />
+
+          <!-- Rose 1 (center top) -->
+          <g transform="translate(128,148)">
+            <circle cx="0" cy="0" r="18" fill="#e91e63" />
+            <circle cx="-8" cy="-6" r="13" fill="#f06292" />
+            <circle cx="8" cy="-6" r="13" fill="#ec407a" />
+            <circle cx="0" cy="-10" r="12" fill="#f48fb1" />
+            <circle cx="-5" cy="5" r="10" fill="#e91e63" />
+            <circle cx="5" cy="5" r="10" fill="#c2185b" />
+            <circle cx="0" cy="0" r="7" fill="#f8bbd0" />
+          </g>
+          <!-- Rose 2 (left) -->
+          <g transform="translate(95,150)">
+            <circle cx="0" cy="0" r="15" fill="#ff4081" />
+            <circle cx="-7" cy="-5" r="11" fill="#ff80ab" />
+            <circle cx="7" cy="-5" r="11" fill="#ff4081" />
+            <circle cx="0" cy="-8" r="10" fill="#ffb3c6" />
+            <circle cx="0" cy="0" r="6" fill="#ffe0eb" />
+          </g>
+          <!-- Rose 3 (right) -->
+          <g transform="translate(163,150)">
+            <circle cx="0" cy="0" r="15" fill="#d81b60" />
+            <circle cx="-7" cy="-5" r="11" fill="#f06292" />
+            <circle cx="7" cy="-5" r="11" fill="#d81b60" />
+            <circle cx="0" cy="-8" r="10" fill="#f48fb1" />
+            <circle cx="0" cy="0" r="6" fill="#fce4ec" />
+          </g>
+          <!-- Tulip left-far -->
+          <g transform="translate(80,165)">
+            <ellipse cx="0" cy="0" rx="12" ry="18" fill="#ff5722" />
+            <ellipse cx="-8" cy="2" rx="9" ry="15" fill="#ff7043" />
+            <ellipse cx="8" cy="2" rx="9" ry="15" fill="#e64a19" />
+          </g>
+          <!-- Tulip right-far -->
+          <g transform="translate(180,165)">
+            <ellipse cx="0" cy="0" rx="12" ry="18" fill="#ab47bc" />
+            <ellipse cx="-8" cy="2" rx="9" ry="15" fill="#ce93d8" />
+            <ellipse cx="8" cy="2" rx="9" ry="15" fill="#8e24aa" />
+          </g>
+          <!-- Baby breath / small flowers -->
+          <g fill="#ffffff" opacity=".9">
+            <circle cx="100" cy="132" r="5" />
+            <circle cx="114" cy="125" r="4" />
+            <circle cx="148" cy="128" r="5" />
+            <circle cx="162" cy="136" r="4" />
+            <circle cx="130" cy="122" r="3" />
+            <circle cx="93" cy="143" r="3" />
+            <circle cx="167" cy="148" r="3" />
+          </g>
+          <!-- Sparkles -->
+          <text x="70" y="115" font-size="14" fill="#ffeb3b">✨</text>
+          <text x="172" y="112" font-size="14" fill="#ffeb3b">✨</text>
+          <text x="125" y="105" font-size="12" fill="#fff9c4">⭐</text>
+        </svg>
+      </div>
+
+      <p class="gift-label">Untukmu yang selalu dihatiku 💕</p>
+      <p class="gift-label">Berapa minus matamu itu?</p>
+      <p class="gift-label">
+        sampai cinta sebesar anggaran MBG tidak kamu lihat dengan baik😒
+      </p>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
